@@ -12,7 +12,7 @@ const List = () => {
     const handleAddTask = (event) => {
         event.preventDefault()
         if (newTask != "") {
-            setTasks([...tasks, {name: newTask}])
+            setTasks([...tasks, {name: newTask, completed: false}])
             setNewTask("")
             const input = document.querySelector("input").value = ""
         }
@@ -33,7 +33,7 @@ const List = () => {
             </form>
             <ul>
                 {tasks.map((task, index) => {
-                    return (<Task key={index} id={index} name={task.name} tasks={tasks} setTasks={setTasks} />)
+                    return (<Task check={task.completed} id={index} key={index} name={task.name} tasks={tasks} setTasks={setTasks} />)
                 })}
             </ul>
         </>
