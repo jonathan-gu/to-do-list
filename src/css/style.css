@@ -17,10 +17,16 @@ h1 {
 
 form {
     padding-left: 80px;
+    padding-bottom: 30px;
 }
 
 input {
+    border-radius: 10px;
     padding: 6px 10px;
+}
+
+input[type='text'] {
+    border: 1px solid #00000050;
 }
 
 input[type='checkbox'] {
@@ -49,13 +55,17 @@ ul {
 
 li {
     align-items: center;
+    border-radius: 20px;
+    box-shadow: 0 0 30px 10px #00000020;
     display: flex;
     justify-content: space-between;
+    margin: 25px 0;
+    padding: 15px;
 }
 
 p {
     font-size: 20px;
-    margin: 15px 0;
+    margin: 0;
 }
 
 .actions {

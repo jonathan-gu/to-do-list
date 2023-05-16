@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 const List = () => {
     const [newTask, setNewTask] = useState("")
     const [tasks, setTasks] = useState(localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : [])
-    const [lastId, setLastId] = useState(localStorage.getItem("lastId") ? JSON.parse(localStorage.getItem("lastId")) : 0)
 
     const handleChange = (event) => {
         setNewTask(event.target.value)
@@ -13,11 +12,9 @@ const List = () => {
     const handleAddTask = (event) => {
         event.preventDefault()
         if (newTask != "") {
-            setTasks([...tasks, {id: lastId + 1, name: newTask}])
-            setLastId(lastId + 1)
+            setTasks([...tasks, {name: newTask}])
             setNewTask("")
-            const input = document.querySelector("input")
-            input.value = ""
+            const input = document.querySelector("input").value = ""
         }
     }
 
@@ -25,22 +22,18 @@ const List = () => {
         localStorage.setItem("tasks", JSON.stringify(tasks))
     }, [tasks])
 
-    useEffect(() => {
-        localStorage.setItem("lastId", JSON.stringify(lastId))
-    }, [lastId])
-
     return (
         <>
             <header>
                 <h1>Liste de tâches</h1>
             </header>
             <form onSubmit={handleAddTask}>
-                <input onChange={handleChange} id="input" />
+                <input onChange={handleChange} id="input" type="text" />
                 <button onClick={handleAddTask}>Ajouter</button>
             </form>
             <ul>
-                {tasks.map(task => {
-                    return (<Task key={task.id} idTask={task.id} name={task.name} tasks={tasks} setTasks={setTasks} />)
+                {tasks.map((task, index) => {
+                    return (<Task key={index} id={index} name={task.name} tasks={tasks} setTasks={setTasks} />)
                 })}
             </ul>
         </>

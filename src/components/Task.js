@@ -1,6 +1,6 @@
-const Task = ({ idTask, name, tasks, setTasks }) => {
+const Task = ({ id, name, tasks, setTasks }) => {
     const handleClick = () => {
-        const filteredArray = tasks.filter(task => task.id != idTask)
+        const filteredArray = tasks.filter((task, key) => key != id)
         setTasks(filteredArray)
     }
 
