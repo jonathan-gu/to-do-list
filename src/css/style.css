@@ -1,4 +1,4 @@
-body, h1 {
+body {
     margin: 0;
 }
 
@@ -9,16 +9,9 @@ header {
     padding: 20px 0;
 }
 
-button {
-    font-size: 16px;
-}
-
-p {
-    font-size: 20px;
-}
-
 h1 {
     color: #FFFFFF;
+    margin: 0;
     text-align: center;
 }
 
@@ -30,12 +23,19 @@ input {
     padding: 6px 10px;
 }
 
+input[type='checkbox'] {
+    height: 20px;
+    width: 20px;
+}
+
 button {
     background-color: #B47B04;
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 30px 10px #00000010;
     color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
     margin-left: 30px;
     padding: 10px 15px;
 }
@@ -48,4 +48,13 @@ li {
     align-items: center;
     display: flex;
     justify-content: space-between;
+}
+
+p {
+    font-size: 20px;
+}
+
+.actions {
+    display: flex;
+    align-items: center;
 }

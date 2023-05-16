@@ -7,7 +7,7 @@ const Task = ({ idTask, name, tasks, setTasks }) => {
     return (
         <li>
             <p>{name}</p>
-            <div>
+            <div className="actions">
                 <input type="checkbox"/>
                 <button onClick={handleClick}>Supprimer</button>
             </div>
