@@ -1,10 +1,10 @@
 import Task from "./Task"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const List = () => {
     const [newTask, setNewTask] = useState("")
-    const [tasks, setTasks] = useState([])
-    const [lastId, setLastId] = useState(0)
+    const [tasks, setTasks] = useState(localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : [])
+    const [lastId, setLastId] = useState(localStorage.getItem("lastId") ? JSON.parse(localStorage.getItem("lastId")) : 0)
 
     const handleChange = (event) => {
         setNewTask(event.target.value)
@@ -20,6 +20,14 @@ const List = () => {
             input.value = ""
         }
     }
+
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks))
+    }, [tasks])
+
+    useEffect(() => {
+        localStorage.setItem("lastId", JSON.stringify(lastId))
+    }, [lastId])
 
     return (
         <>
